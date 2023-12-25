@@ -1,0 +1,59 @@
+import React from 'react'
+import cloudinary from 'cloudinary'
+import CloudinaryImage from './CloudinaryImage'
+
+
+type SearchResultType = {
+  resources : {
+    public_id: string
+  }[];
+  error: string
+}
+
+async function GalleryPage() {
+  let results = (await cloudinary.v2.search
+    .expression('resource_type:image')
+    .sort_by('created_at', 'asc')
+    .max_results(30)
+    .execute().catch(error=> {      
+      return {
+        error: error.message
+      }
+    })) as SearchResultType;
+
+    if (results.error) {      
+      return <div>
+        {results.error}
+      </div>
+    }
+
+    function getCol(colIndex: number) {
+      return results.resources.filter((resource, index)=>{
+        return index % 3 === colIndex
+      })
+    }
+
+  return (
+    <div className='p-4'>
+      <div className='grid grid-cols-3 gap-2 md:gap-4'>
+        {[getCol(0),getCol(1),getCol(2)].map((col, indx)=>{
+          return <div key={indx} className='flex flex-col gap-2 md:gap-4'>
+            {col.map(e=> (
+              <CloudinaryImage
+                className="rounded shadow"
+                key={e.public_id}
+                width="960"
+                height="600"
+                src={e.public_id}
+                sizes="100vw"
+                alt="Description of my image"
+              />
+            ))}
+          </div>
+        })}
+      </div>
+    </div>
+  )
+}
+
+export default GalleryPage
