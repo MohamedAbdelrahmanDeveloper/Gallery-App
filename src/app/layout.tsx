@@ -50,6 +50,7 @@ export default function RootLayout({
                   <div className="text-xl ps-3.5 font-medium pb-5">Start-next</div>
                   <li><Link href="/">Home</Link></li>
                   <li><Link href="/gallery">Gallery</Link></li>
+                  <li><Link href="/favorite">Favorite</Link></li>
                 </ul>
             </div>
           </div>

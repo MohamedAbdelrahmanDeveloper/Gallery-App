@@ -4,9 +4,10 @@ import { SearchForm } from './Search';
 import Button from './button';
 
 
-type SearchResultType = {
+export type SearchResultType = {
   resources : {
-    public_id: string
+    public_id: string;
+    tags: string[]
   }[];
   error: string
 }
@@ -20,6 +21,7 @@ async function GalleryPage({ searchParams: { search },
   let results = (await cloudinary.v2.search
     .expression(`resource_type:image${search ? ` AND tags=${search}` : ""}`)
     .sort_by('created_at', 'asc')
+    .with_field("tags")
     .max_results(30)
     .execute().catch(error=> {      
       return {
@@ -32,8 +34,9 @@ async function GalleryPage({ searchParams: { search },
         {results.error}
       </div>
     }
-
+    
     function getCol(colIndex: number) {
+      
       return results.resources.filter((resource, index)=>{
         return index % 3 === colIndex
       })
@@ -49,7 +52,10 @@ async function GalleryPage({ searchParams: { search },
           return <div key={indx} className='flex flex-col gap-2 md:gap-4'>
             {col.map(e=> (
                <div key={e.public_id + 'div'}>
-                <Button public_id={e.public_id} isFav={true}/>
+                {e.tags.includes('favorite') ?
+                <Button public_id={e.public_id} isFav={false} text='Not Fav' /> :
+                <Button public_id={e.public_id} isFav={true} text='Set Fav'/>
+              }
                 <CloudinaryImage
                   className="rounded shadow"
                   key={e.public_id}
