@@ -18,17 +18,16 @@ export function SearchForm({ initialSearch }: { initialSearch: string }) {
         router.replace(`/gallery?search=${encodeURIComponent(tagName)}`);
         router.refresh();
       }}
+      className="mb-4"
     >
-      <label htmlFor="tag-name" className="text-right">
-        Search By Tag
-      </label>
       <div className="flex gap-2">
         <input
+          className="input input-bordered p-2 w-full rounded"
           onChange={(e) => setTagName(e.currentTarget.value)}
-          id="tag-name"
+          placeholder="Search by tag"
           value={tagName ? tagName : ""}
         />
-        <button type="submit">Search</button>
+        <button type="submit" className="btn btn-primary">Search</button>
       </div>
     </form>
   );

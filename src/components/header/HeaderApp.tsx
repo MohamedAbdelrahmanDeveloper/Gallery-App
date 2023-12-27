@@ -2,7 +2,7 @@ import TitlePage from "./TitlePage"
 
 function HeaderApp() {
   return (
-    <div className="navbar bg-base-100 shadow sticky -top-2 left-0">
+    <div className="navbar bg-base-100 shadow sticky -top-2 left-0 z-50">
       <div className="navbar-start">
         <div className="dropdown">
           <label htmlFor="my-drawer-2" className="btn btn-ghost lg:hidden">

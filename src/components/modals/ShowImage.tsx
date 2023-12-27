@@ -4,7 +4,7 @@ import Modal from "./Modal"
 import { useState } from "react";
 
 
-export default function ShowModal({image} : {image: string}) {
+export default function ShowImage({image} : {image: string}) {
   const [modal, setModal] = useState(false);
  
   return (

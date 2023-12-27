@@ -1,17 +1,7 @@
 'use client'
+import { ModalType } from '@/types/types';
 import React, { useEffect, useState} from 'react'
 import ReactDOM from 'react-dom';
-
-type ModalType = {
-  children : any
-  modal: any
-  setModal: any
-  title: any
-  className?: any
-  classBtn: any
-  iconBtn: any
-  textBtn: any
-}
 
 function Modal({children, modal, setModal, title, className, classBtn, iconBtn, textBtn} : ModalType) {
   const [mount, setMount] = useState<boolean>(false);

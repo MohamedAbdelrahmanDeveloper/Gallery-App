@@ -1,6 +1,6 @@
 'use client'
+import { setAsFavoriteAction } from '@/actions/actions';
 import { useRouter } from 'next/navigation'
-import { setAsFavoriteAction } from './action'
 import { useState } from 'react';
 
 
@@ -22,7 +22,7 @@ function Button({public_id, isFav}: {public_id:string, isFav: boolean}) {
   }
   return (
     <>
-    <button className='btn btn-ghost text-red-500 absolute top-1 right-1' onClick={handelClick}>
+    <button className='btn btn-ghost text-red-500 absolute top-1 right-20' onClick={handelClick}>
       {loading ? <span className="loading loading-spinner text-primary"></span> :
         isFavorite ?
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" className="w-6 h-6">
