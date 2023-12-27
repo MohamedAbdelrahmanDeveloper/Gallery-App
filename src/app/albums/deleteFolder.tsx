@@ -9,7 +9,8 @@ export default function DeleteFolder({folder}: {folder: string}) {
   
     function handelClick(e:React.MouseEvent<HTMLButtonElement>) {
       setLoading(true)
-      removeFolder(folder)
+      let s = removeFolder(folder)
+      console.log(s);
       setTimeout(() => {
         setLoading(false)
       }, 3000)

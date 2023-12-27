@@ -27,8 +27,11 @@ export async function removeImage(id: string) {
 }
 
 export async function removeFolder(name: string) {
-  let a = await cloudinary.v2.uploader.DeleteFolder(name)
-  console.log(a);  
+  try {
+    await cloudinary.v2.api.delete_folder(name)
+  } catch (error:any) {
+    console.log(error.error.message);
+  }
 }
 
 
