@@ -32,6 +32,7 @@ export default function RootLayout({
   return (
     <html lang="en" >
         <body className={inter.className + ' min-h-screen bg-base-200'}>
+        <div id='modal-root'></div>
         <div className="drawer lg:drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
             <div className="drawer-content">

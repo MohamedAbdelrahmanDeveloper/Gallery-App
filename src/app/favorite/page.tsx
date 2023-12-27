@@ -20,24 +20,21 @@ export default async function FavoritesPage() {
     return (
       <div className='p-4'>
         <div className='grid grid-cols-3 gap-2 md:gap-4'>
-          {[getCol(0),getCol(1),getCol(2)].map((col, indx)=>{
+          {
+          results.resources.length > 0 ? [getCol(0),getCol(1),getCol(2)].map((col, indx)=>{
             return <div key={indx} className='flex flex-col gap-2 md:gap-4'>
               {col.map((e: any)=> (
-                 <div key={e.public_id + 'div'}>
-                  {/* <Button public_id={e.public_id} isFav={true}/> */}
                   <CloudinaryImage
-                    className="rounded shadow"
-                    key={e.public_id}
-                    width="960"
-                    height="600"
-                    src={e.public_id}
-                    sizes="100vw"
-                    alt="Description of my image"
+                  key={e.public_id}
+                  image={e}  
                   />
-                </div>
               ))}
             </div>
-          })}
+          }) : 
+          <div className="h-[85vh] col-span-full flex justify-center items-center">
+            <h1 className="text-xl text-base-content/70 font-medium">No Image Fav</h1>
+          </div>
+        }
         </div>
       </div>
     )
