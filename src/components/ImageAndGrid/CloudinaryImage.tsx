@@ -3,7 +3,7 @@ import { CldImage } from 'next-cloudinary'
 import React, { useState } from 'react'
 import Button from './button'
 import { useRouter } from 'next/navigation'
-import { removeImage } from '@/actions/actions'
+import { removeFromAlbum, removeImage } from '@/actions/actions'
 import ShowImage from '../modals/ShowImage'
 import AddToAlbum from '../modals/AddToAlbum'
 
@@ -11,7 +11,7 @@ function CloudinaryImage({image} : {image:any}) {
   const router = useRouter();
   const [loading, setLoading] = useState(false)
 
-  function handelClick(e:React.MouseEvent<HTMLAnchorElement>) {
+  function deletImageHandelClick(e:React.MouseEvent<HTMLAnchorElement>) {
     setLoading(true)
     removeImage(image.public_id)
     setTimeout(() => {
@@ -22,6 +22,16 @@ function CloudinaryImage({image} : {image:any}) {
     }, 3500)
   }
 
+  function moveImageHandelClick(e:React.MouseEvent<HTMLAnchorElement>) {
+    removeFromAlbum(image)
+  }
+
+
+  function isImageInFolder(e: string) {
+    let parts = e.split("/");
+    return parts.length > 1
+  }
+  
   return (
     <div key={image.public_id + 'div'} className=' relative'>
       <Button public_id={image.public_id} isFav={image.tags.includes('favorite')} />
@@ -38,11 +48,16 @@ function CloudinaryImage({image} : {image:any}) {
             </a>
           </li>
           <li>
-            <a onClick={handelClick} className='flex justify-between text-error'>
+            <a onClick={deletImageHandelClick} className='flex justify-between text-error'>
               <span>Delete</span>
               {loading && <span className="loading loading-spinner text-primary"></span>}
             </a>
           </li>
+          {isImageInFolder(image.public_id) && <li>
+            <a onClick={moveImageHandelClick} className='flex justify-between text-error'>
+              <span>Remove from album</span>
+            </a>
+          </li>}
         </ul>
       </div>
     <ShowImage image={image.public_id}/>

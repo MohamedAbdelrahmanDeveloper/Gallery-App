@@ -6,22 +6,36 @@ import React, { useState } from 'react'
 export default function DeleteFolder({folder}: {folder: string}) {
     const router = useRouter();
     const [loading, setLoading] = useState(false)
+    const [error, setError] = useState<string | null>(null)
   
-    function handelClick(e:React.MouseEvent<HTMLButtonElement>) {
+    async function handelClick(e:React.MouseEvent<HTMLButtonElement>) {
       setLoading(true)
-      let s = removeFolder(folder)
-      console.log(s);
-      setTimeout(() => {
+      let err = await removeFolder(folder)
+      if (err) {
+        setError(err)
         setLoading(false)
-      }, 3000)
-      setTimeout(() => {
-        router.refresh();
-      }, 3500)
+        setTimeout(() => {
+          setError(null)
+        }, 3000)
+      }
+      else {
+        setTimeout(() => {
+          setLoading(false)
+          router.refresh();
+        }, 3500)
+      }
     }
   
   return (
-    <button onClick={handelClick} className='btn' >delete
-    {loading && <span className="loading loading-spinner text-primary"></span>}
-    </button>
+    <div>
+      <button onClick={handelClick} className='btn btn-error btn-sm' >Delete
+        {loading && <span className="loading loading-spinner text-primary"></span>}
+      </button>
+      {error && <div className="toast toast-end">
+          <div className="alert alert-warning">
+            <span>{error}</span>
+          </div>
+        </div>}
+    </div>
   )
 }

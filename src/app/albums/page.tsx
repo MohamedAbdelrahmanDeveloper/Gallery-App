@@ -11,15 +11,22 @@ export default async function AlbumsPage() {
 
   return (
     <section>
-      <div className="flex flex-col gap-8">
+      <div className="flex flex-col gap-8 p-4">
         <div className="flex justify-between">
           <h1 className="text-4xl font-bold">Albums</h1>
         </div>
         <div className="grid grid-cols-3 gap-4">
           {folders.map((folder) => (
-            <div key={folder.path}>
-              <Link href={`/albums/${folder.path}`}>{folder.name}</Link>
-              <DeleteFolder folder={folder.name} />
+            <div key={folder.path} className="stats shadow">
+                <div className="stat">
+                  <div className="stat-title">Folder :</div>
+                  <Link href={`/albums/${folder.path}`}>
+                    <div className="stat-value">{folder.name}</div>
+                  </Link>
+                  <div className="stat-desc flex justify-end">
+                    <DeleteFolder folder={folder.name} />
+                  </div>
+                </div>
             </div>
           ))}
         </div>
