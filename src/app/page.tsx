@@ -1,12 +1,5 @@
 'use client'
-import { CldUploadButton, CldUploadWidgetResults } from 'next-cloudinary'
-
-interface CldUploadButtonType extends CldUploadWidgetResults {
-  info: {
-    public_id: string
-  }
-}
-
+import { CldUploadButton } from 'next-cloudinary'
 
 
 function page() {
