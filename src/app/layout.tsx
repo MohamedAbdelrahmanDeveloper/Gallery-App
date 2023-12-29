@@ -6,27 +6,21 @@ import Link from 'next/link'
 import cloudinary from 'cloudinary';
 import { Folder } from '@/types/types'
 
-
-
-export const revalidate = 10
-
-
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Gallery',
-  description: "desc - by Mohamed Abdelrahman",
+  title: 'Gallery App',
+  description: "Photo gallery built with Next.js. It allows visitors to explore a diverse range of photos with a seamless and efficient viewing experience - by Mohamed Abdelrahman",
   openGraph: {
     type: "website",
-    url: "https://example.com",
-    title: "My Website",
-    description: "My Website Description",
-    siteName: "My Website",
+    url: "https://gallery-m99.netlify.app/",
+    title: "Gallery App",
+    description: "Photo gallery built with Next.js. It allows visitors to explore a diverse range of photos with a seamless and efficient viewing experience.",
+    siteName: "Gallery App",
     images: [{
-      url: "https://example.com/og.png",
+      url: "https://avatars.githubusercontent.com/u/54208900?v=4",
     }],
   },
-  twitter: { description :"",card: "summary_large_image", site: "@site", creator: "@creator", "images": "https://example.com/og.png" }
 }
 
 export const MetaApp: any = metadata
@@ -61,7 +55,7 @@ export default async function RootLayout({
                 <label htmlFor="my-drawer-2" aria-label="close sidebar" className="drawer-overlay"></label> 
                 <ul className="menu p-4 w-80 min-h-full bg-base-100 text-base-content">
                   {/* Sidebar content here */}
-                  <div className="text-xl ps-3.5 font-medium pb-5">Start-next</div>
+                  <div className="text-xl ps-3.5 font-medium pb-5">Gallery App</div>
                   <li>
                     <Link href="/">
                       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-6 h-6">

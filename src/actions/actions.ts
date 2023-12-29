@@ -43,7 +43,6 @@ export async function removeFolder(name: string) {
     await cloudinary.v2.api.delete_folder(name)
     return null;
   } catch (error:any) {
-    console.log(error.message);
     if (error.message) {
       return error.message
     }

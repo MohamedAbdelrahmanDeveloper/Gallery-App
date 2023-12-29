@@ -4,6 +4,9 @@ import DeleteFolder from "./deleteFolder";
 
 export type Folder = { name: string; path: string };
 
+
+export const revalidate = 10
+
 export default async function AlbumsPage() {
   const { folders } = (await cloudinary.v2.api.root_folders()) as {
     folders: Folder[];
