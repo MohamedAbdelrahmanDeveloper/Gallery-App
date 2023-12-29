@@ -11,7 +11,7 @@ function CloudinaryImage({image} : {image:any}) {
   const router = useRouter();
   const [loading, setLoading] = useState(false)
 
-  function deletImageHandelClick(e:React.MouseEvent<HTMLAnchorElement>) {
+  function deleteImageHandelClick(e:React.MouseEvent<HTMLAnchorElement>) {
     setLoading(true)
     removeImage(image.public_id)
     setTimeout(() => {
@@ -24,6 +24,9 @@ function CloudinaryImage({image} : {image:any}) {
 
   function moveImageHandelClick(e:React.MouseEvent<HTMLAnchorElement>) {
     removeFromAlbum(image)
+    setTimeout(() => {
+      router.refresh();
+    }, 3500)
   }
 
 
@@ -48,7 +51,7 @@ function CloudinaryImage({image} : {image:any}) {
             </a>
           </li>
           <li>
-            <a onClick={deletImageHandelClick} className='flex justify-between text-error'>
+            <a onClick={deleteImageHandelClick} className='flex justify-between text-error'>
               <span>Delete</span>
               {loading && <span className="loading loading-spinner text-primary"></span>}
             </a>

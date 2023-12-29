@@ -6,6 +6,11 @@ import Link from 'next/link'
 import cloudinary from 'cloudinary';
 import { Folder } from '@/types/types'
 
+
+
+export const revalidate = 10
+
+
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {

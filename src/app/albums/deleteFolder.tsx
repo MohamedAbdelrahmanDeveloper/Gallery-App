@@ -16,13 +16,13 @@ export default function DeleteFolder({folder}: {folder: string}) {
         setLoading(false)
         setTimeout(() => {
           setError(null)
-        }, 3000)
+        }, 2000)
       }
       else {
         setTimeout(() => {
           setLoading(false)
           router.refresh();
-        }, 3500)
+        }, 2500)
       }
     }
   
