@@ -1,12 +1,12 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+// import { Inter } from 'next/font/google'
 import './globals.css'
 import HeaderApp from '@/components/header/HeaderApp'
 import Link from 'next/link'
 import cloudinary from 'cloudinary';
 import { Folder } from '@/types/types'
 
-const inter = Inter({ subsets: ['latin'] })
+// const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
   title: 'Gallery App',
@@ -36,7 +36,8 @@ export default async function RootLayout({
 
   return (
     <html lang="en" >
-        <body className={inter.className + ' min-h-screen bg-base-200'}>
+        {/* <body className={inter.className + ' min-h-screen bg-base-200'}> */}
+        <body className="min-h-screen bg-base-200">
         <div id='modal-root'></div>
         <div className="drawer lg:drawer-open">
             <input id="my-drawer-2" type="checkbox" className="drawer-toggle" />
