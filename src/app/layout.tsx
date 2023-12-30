@@ -35,7 +35,7 @@ export default async function RootLayout({
   };
 
   return (
-    <html lang="en" >
+    <html lang="en" data-theme="light">
         {/* <body className={inter.className + ' min-h-screen bg-base-200'}> */}
         <body className="min-h-screen bg-base-200">
         <div id='modal-root'></div>
