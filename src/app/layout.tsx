@@ -48,7 +48,7 @@ export default async function RootLayout({
                 </div>
                 <footer className="footer footer-center p-4 bg-base-300 text-base-content">
                 <aside>
-                  <p>Copyright © {new Date().getFullYear()} - <a target='_blank' href='https://github.com/m7md0a' className='link link-hover'>Mohamed</a></p>
+                  <p>Copyright © {new Date().getFullYear()} - <a target='_blank' href='https://github.com/MohamedAbdelrahmanDeveloper' className='link link-hover'>Mohamed</a></p>
                 </aside>
               </footer>
             </div> 
